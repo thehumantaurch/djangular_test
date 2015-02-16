@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block body %}
+ng-app="pollApp"
+{% endblock %}
+{% block header %}
+Tasks
+{% endblock %}
+
+{% block content %}
+{% verbatim %}
+<div ui-view></div>
+    <div ng-controller="taskListController">
+    <ul>
+        <li ng-repeat="task in tasks">
+        <input type="checkbox" ng-model="task.status">
+        <span>{{task.task_description}}</span>
+        </li>
+    </ul>
+
+    <form>
+      <input type="text" ng-model="newTask.task_description" placeholder="Add a new task">
+      <button ng-click="save()">Add Task</button>
+    </form>
+</div>
+</div>
+
+
+
+{% endverbatim %}
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ STATIC_URL }}js/angular.js"></script>
+<script src="{{ STATIC_URL }}js/angular-ui-router.min.js"></script>
+<script src="{{ STATIC_URL}}js/app.js"></script>
+<script src="{{ STATIC_URL}}js/controllers.js"></script>
+<script src="{{ STATIC_URL}}js/directives.js"></script>
+<script src="{{ STATIC_URL}}js/services.js"></script>
+{% endblock %}
+
